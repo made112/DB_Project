@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity"
+            minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="600.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/8" fx:controller="fbrs.controller.InAndOutRecordController">
+    <center>
+        <VBox spacing="16.0" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets/>
+            </BorderPane.margin>
+            <TableView fx:id="table" prefHeight="434.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="selectColumn" prefWidth="35.0" sortable="false"/>
+                    <TableColumn fx:id="quantityColumn" prefWidth="122.0" sortable="false" text="العدد"/>
+                    <TableColumn fx:id="idColumn" prefWidth="133.0" sortable="false" text="رقم المستخدم"/>
+                    <TableColumn fx:id="nameColumn" prefWidth="279.0" sortable="false" text="اسم المستخدم"/>
+                    <TableColumn fx:id="commentColumn" prefWidth="265.0" sortable="false" text="ملاحظات"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+    <top>
+        <HBox prefHeight="66.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+            <Button fx:id="backBtn" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false"
+                    onAction="#back" text="رجوع">
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+                <HBox.margin>
+                    <Insets bottom="16.0" left="16.0" top="16.0"/>
+                </HBox.margin>
+            </Button>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                <Text fx:id="Title" strokeType="OUTSIDE" strokeWidth="0.0" text="كشف استلام أو تسليم">
+                    <font>
+                        <Font size="28.0"/>
+                    </font>
+                </Text>
+            </HBox>
+        </HBox>
+    </top>
+    <bottom>
+        <VBox alignment="CENTER" prefHeight="82.0" prefWidth="800.0" spacing="8.0" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER" prefHeight="84.0" prefWidth="800.0" spacing="16.0" VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="8.0" top="8.0"/>
+                </padding>
+                <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#onDelete" text="حذف المحدد">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                    <HBox.margin>
+                        <Insets right="16.0"/>
+                    </HBox.margin>
+                </Button>
+                <Label text="العدد الاجمالي للبُكس غير المعتمدة : ">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                    <HBox.margin>
+                        <Insets/>
+                    </HBox.margin>
+                </Label>
+                <Label fx:id="numberOfBuksa" text="0">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+                <Button fx:id="AdmitBtn" mnemonicParsing="false" onAction="#onAdmit" text="إعتماد">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Button>
+            </HBox>
+            <Separator prefWidth="200.0"/>
+            <HBox alignment="CENTER" prefWidth="824.0" spacing="8.0" VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="16.0" left="16.0"/>
+                </padding>
+                <Label text="العدد">
+                    <HBox.margin>
+                        <Insets right="16.0"/>
+                    </HBox.margin>
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+                <TextField onAction="#onQuantity" fx:id="quantityTextField" promptText="أدخل العدد">
+                    <HBox.margin>
+                        <Insets right="32.0"/>
+                    </HBox.margin>
+                </TextField>
+                <Label fx:id="SellerOrFisherman" text="تاجر/صياد">
+                    <HBox.margin>
+                        <Insets right="8.0"/>
+                    </HBox.margin>
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+                <TextField onAction="#onAdd" fx:id="userTextField" promptText="أدخل المستخدم">
+                    <HBox.margin>
+                        <Insets right="32.0"/>
+                    </HBox.margin>
+                </TextField>
+                <TextField onAction="#onAdd" fx:id="commentTextField" promptText="ملاحظات">
+                    <HBox.margin>
+                        <Insets right="16.0"/>
+                    </HBox.margin>
+                </TextField>
+                <Button fx:id="addBtn" mnemonicParsing="false" onAction="#onAdd" onKeyPressed="#onAdd" text="إضافة">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                </Button>
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>

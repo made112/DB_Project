@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity"
+            minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="600.0"
+            style="-fx-background-color: #7FDBDA;" xmlns="http://javafx.com/javafx/8"
+            fx:controller="fbrs.controller.FishermanInputReportController">
+    <center>
+        <VBox spacing="16.0" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets/>
+            </BorderPane.margin>
+            <TableView fx:id="table" editable="true" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="selectColumn" prefWidth="35.0" sortable="false"/>
+                    <TableColumn fx:id="IDColumn" prefWidth="70.0" sortable="false" text="رقم"/>
+                    <TableColumn fx:id="quantityColumn" prefWidth="140.0" text="العدد"/>
+                    <TableColumn fx:id="priceColumn" prefWidth="140.0" text="السعر"/>
+                    <TableColumn fx:id="sellerColumn" prefWidth="200.0" sortable="false" text="التاجر"/>
+                    <TableColumn fx:id="commentColumn" prefWidth="250.0" sortable="false" text="ملاحظات"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+    <top>
+        <HBox prefHeight="66.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="16.0" top="8.0"/>
+            </padding>
+            <Button fx:id="backBtn" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false"
+                    onAction="#back" text="رجوع">
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+                <HBox.margin>
+                    <Insets bottom="16.0" left="16.0" top="16.0"/>
+                </HBox.margin>
+            </Button>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="تبيض كشف صياد" HBox.hgrow="ALWAYS">
+                    <font>
+                        <Font size="28.0"/>
+                    </font>
+                </Text>
+            </HBox>
+        </HBox>
+    </top>
+    <bottom>
+        <VBox BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER" spacing="8.0" VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="16.0" left="32.0" top="16.0"/>
+                </padding>
+                <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#onDelete" text="حذف المحدد">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                    <HBox.margin>
+                        <Insets right="16.0"/>
+                    </HBox.margin>
+                </Button>
+                <TextField fx:id="fishermanTextField" promptText="بحث عن صياد">
+                    <HBox.margin>
+                        <Insets left="32.0"/>
+                    </HBox.margin>
+                </TextField>
+                <Label fx:id="fishermanName" text="          ">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                    <HBox.margin>
+                        <Insets left="32.0"/>
+                    </HBox.margin>
+                </Label>
+                <Separator orientation="VERTICAL" HBox.hgrow="ALWAYS">
+                    <HBox.margin>
+                        <Insets left="8.0"/>
+                    </HBox.margin>
+                </Separator>
+                <Label text="الرصيد المتبقي للصياد : ">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                    <HBox.margin>
+                        <Insets left="8.0"/>
+                    </HBox.margin>
+                </Label>
+                <Label fx:id="fishermanBalance" text="0">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+                <Separator orientation="VERTICAL">
+                    <HBox.margin>
+                        <Insets left="8.0"/>
+                    </HBox.margin>
+                </Separator>
+                <Label text="العدد الاجمالي للبُكس غير المعتمدة : ">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                    <HBox.margin>
+                        <Insets left="8.0"/>
+                    </HBox.margin>
+                </Label>
+                <Label fx:id="numberOfBuksa" text="0">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+                <Button fx:id="AdmitBtn" mnemonicParsing="false" onAction="#onAdmit" text="إعتماد">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                    <HBox.margin>
+                        <Insets left="16.0"/>
+                    </HBox.margin>
+                </Button>
+            </HBox>
+            <Separator prefWidth="200.0"/>
+            <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets bottom="16.0" left="32" top="16.0"/>
+                </padding>
+                <Label text="العدد">
+                    <HBox.margin>
+                        <Insets right="16.0"/>
+                    </HBox.margin>
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="quantityTextField" onAction="#onQuantity" prefWidth="100.0"
+                           promptText="أدخل العدد">
+                    <HBox.margin>
+                        <Insets right="32.0"/>
+                    </HBox.margin>
+                </TextField>
+                <Label text="X         السعر">
+                    <HBox.margin>
+                        <Insets right="16.0"/>
+                    </HBox.margin>
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="priceTextField" onAction="#onPrice" prefWidth="100.0" promptText="أدخل السعر"
+                           text="0">
+                    <HBox.margin>
+                        <Insets right="32.0"/>
+                    </HBox.margin>
+                </TextField>
+                <Label text="التاجر">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="sellerTextField" onAction="#onAdd" prefWidth="150.0" promptText="أدخل التاجر">
+                    <HBox.margin>
+                        <Insets left="32.0" right="32.0"/>
+                    </HBox.margin>
+                </TextField>
+                <TextField fx:id="commentTextField" onAction="#onAdd" prefWidth="150.0" promptText="ملاحظة">
+                    <HBox.margin>
+                        <Insets right="32.0"/>
+                    </HBox.margin>
+                </TextField>
+                <Button fx:id="addBtn" mnemonicParsing="false" onAction="#onAdd" onKeyPressed="#onAdd"
+                        text="إضافة">
+                    <font>
+                        <Font size="14.0"/>
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                    <HBox.margin>
+                        <Insets right="16.0"/>
+                    </HBox.margin>
+                </Button>
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>

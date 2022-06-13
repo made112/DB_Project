@@ -1,0 +1,21 @@
+.root {
+    -fx-background-color: white;
+}
+
+.button {
+    -fx-background-color: white;
+    -fx-text-fill: #131313;
+    -fx-min-width: 100%;
+    -fx-min-height: 100%;
+    -fx-font-size: 18px;
+}
+
+.button:hover {
+    -fx-background-color: #E6E6E6;
+    -fx-border-color: lightgray;
+    -fx-border-width: 1;
+    -fx-border-radius: 1;
+}
+
+.button:pressed {
+}

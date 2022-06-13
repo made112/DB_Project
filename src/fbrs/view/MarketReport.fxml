@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity"
+            minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="600.0" prefWidth="800.0"
+            xmlns="http://javafx.com/javafx/8" fx:controller="fbrs.controller.MarketReportController">
+    <center>
+        <VBox spacing="16.0" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets/>
+            </BorderPane.margin>
+            <TableView fx:id="table" onMouseClicked="#onClick" prefHeight="200.0" prefWidth="200.0"
+                       VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="selectColumn" prefWidth="50.0" sortable="false"/>
+                    <TableColumn fx:id="idColumn" prefWidth="88.0" text="رفم التاجر"/>
+                    <TableColumn fx:id="nameColumn" prefWidth="213.0" text="اسم التاجر"/>
+                    <TableColumn fx:id="phoneColumn" prefWidth="181.0" text="الجوال"/>
+                    <TableColumn fx:id="balanceColumn" prefWidth="86.0" text="الرصيد"/>
+                </columns>
+                <VBox.margin>
+                    <Insets left="16.0"/>
+                </VBox.margin>
+            </TableView>
+        </VBox>
+    </center>
+    <left>
+        <VBox alignment="TOP_CENTER" spacing="8.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="16.0" left="16.0" right="16.0" top="8.0"/>
+            </padding>
+            <TextField fx:id="searchField" prefWidth="190.0" promptText=" بحث">
+                <VBox.margin>
+                    <Insets/>
+                </VBox.margin>
+            </TextField>
+            <Label text="عرض التقرير من تاريخ">
+                <VBox.margin>
+                    <Insets top="40.0"/>
+                </VBox.margin>
+            </Label>
+            <DatePicker fx:id="datePicker" prefWidth="190.0"
+                        promptText="عرض التقرير من تاريخ">
+            </DatePicker>
+            <Button fx:id="printBriefReportBtn" mnemonicParsing="false" onAction="#printBriefReport"
+                    prefWidth="190.0" text="${'طباعة التقرير المختصر\nمع تفاصيل المحدد'}" textAlignment="CENTER">
+                <VBox.margin>
+                    <Insets top="20.0"/>
+                </VBox.margin>
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+            </Button>
+            <Button fx:id="printDetailedReportBtn" mnemonicParsing="false" onAction="#printDetailedReport"
+                    prefWidth="190.0" text="طباعة التقرير مع التفصيل للجميع">
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+                <VBox.margin>
+                    <Insets top="20.0"/>
+                </VBox.margin>
+            </Button>
+            <Separator prefHeight="0.0" prefWidth="200.0">
+                <opaqueInsets>
+                    <Insets/>
+                </opaqueInsets>
+                <VBox.margin>
+                    <Insets top="10.0"/>
+                </VBox.margin>
+            </Separator>
+            <Button fx:id="printSellerWithBalance" layoutX="26.0" layoutY="202.0" mnemonicParsing="false"
+                    onAction="#printSellerWithBalance" prefWidth="190.0" text="طباعة تقرير  الأرصدة">
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+                <VBox.margin>
+                    <Insets top="10.0"/>
+                </VBox.margin>
+            </Button>
+            <Separator prefHeight="0.0" prefWidth="200.0">
+                <opaqueInsets>
+                    <Insets/>
+                </opaqueInsets>
+                <VBox.margin>
+                    <Insets top="10.0"/>
+                </VBox.margin>
+            </Separator>
+            <Button fx:id="resetAccountsBtn" mnemonicParsing="false" onAction="#zeroBalances" prefWidth="190.0"
+                    text="تصفير الحسابات">
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+                <VBox.margin>
+                    <Insets top="10.0"/>
+                </VBox.margin>
+            </Button>
+            <Separator prefWidth="200.0">
+                <VBox.margin>
+                    <Insets top="10.0"/>
+                </VBox.margin>
+            </Separator>
+            <Button fx:id="newSellerBtn" layoutX="26.0" layoutY="155.0" mnemonicParsing="false"
+                    onAction="#newSeller" prefWidth="190.0" text="تاجر جديد">
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+                <VBox.margin>
+                    <Insets top="10.0"/>
+                </VBox.margin>
+            </Button>
+        </VBox>
+    </left>
+    <top>
+        <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <Button alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#back"
+                    text="رجوع">
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+                <HBox.margin>
+                    <Insets bottom="16.0" left="16.0" top="16.0"/>
+                </HBox.margin>
+            </Button>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                <Text fx:id="title" strokeType="OUTSIDE" strokeWidth="0.0" text="تقرير السوق">
+                    <font>
+                        <Font size="36.0"/>
+                    </font>
+                </Text>
+            </HBox>
+        </HBox>
+    </top>
+</BorderPane>

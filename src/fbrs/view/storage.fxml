@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity"
+            minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" xmlns="http://javafx.com/javafx/8"
+            fx:controller="fbrs.controller.StorageController">
+    <center>
+        <VBox spacing="16.0" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets/>
+            </BorderPane.margin>
+            <TableView fx:id="table" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="selectColumn" prefWidth="50.0" sortable="false"/>
+                    <TableColumn fx:id="causedByColumn" prefWidth="160.0" text="المسبب"/>
+                    <TableColumn fx:id="typeColumn" prefWidth="200.0" text="نوع القيد"/>
+                    <TableColumn fx:id="quantityColumn" prefWidth="100.0" text="الكمية"/>
+                    <TableColumn fx:id="dateCreatedColumn" prefWidth="180.0" text="تاريخ الإنشاء"/>
+                    <TableColumn fx:id="dateUpdatedColumn" prefWidth="200.0" text="تاريخ التعديل"/>
+                    <TableColumn fx:id="commentColumn" minWidth="200.0" prefWidth="500.0" sortable="false"
+                                 text="ملاحظات"/>
+                </columns>
+                <VBox.margin>
+                    <Insets/>
+                </VBox.margin>
+            </TableView>
+        </VBox>
+    </center>
+    <top>
+        <VBox BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER_LEFT">
+                <VBox.margin>
+                    <Insets bottom="16.0" top="16.0"/>
+                </VBox.margin>
+                <Button fx:id="backBtn" alignment="TOP_CENTER" contentDisplay="CENTER" mnemonicParsing="false"
+                        onAction="#back" text="رجوع">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                    <HBox.margin>
+                        <Insets bottom="16.0" left="16.0" top="16.0"/>
+                    </HBox.margin>
+                </Button>
+                <VBox alignment="CENTER" spacing="8.0" HBox.hgrow="ALWAYS">
+                    <HBox.margin>
+                        <Insets left="16.0"/>
+                    </HBox.margin>
+                    <Button mnemonicParsing="false" onAction="#onResetBroken" prefWidth="150.0"
+                            text="تفريم البكس المحطمة">
+                        <font>
+                            <Font name="Times New Roman" size="14.0"/>
+                        </font>
+                        <cursor>
+                            <Cursor fx:constant="HAND"/>
+                        </cursor>
+                    </Button>
+                    <HBox alignment="CENTER">
+                        <Label text="البُكس المحطمة">
+                            <font>
+                                <Font name="Times New Roman" size="18.0"/>
+                            </font>
+                        </Label>
+                        <Label fx:id="brokenCount" text="0">
+                            <font>
+                                <Font name="Times New Roman" size="18.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets left="8.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <Label text="بُكسة">
+                            <font>
+                                <Font name="Times New Roman" size="18.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets left="8.0"/>
+                            </HBox.margin>
+                        </Label>
+                    </HBox>
+                </VBox>
+                <HBox alignment="CENTER">
+                    <Text fx:id="title" strokeType="OUTSIDE" strokeWidth="0.0" text="البُكس المتبقية في المخزن">
+                        <font>
+                            <Font name="Times New Roman" size="28.0"/>
+                        </font>
+                        <HBox.margin>
+                            <Insets/>
+                        </HBox.margin>
+                    </Text>
+                    <Label fx:id="storageBalance" text="000">
+                        <font>
+                            <Font name="Times New Roman" size="24.0"/>
+                        </font>
+                        <HBox.margin>
+                            <Insets left="16.0" top="8.0"/>
+                        </HBox.margin>
+                    </Label>
+                    <Label text="بُكسة">
+                        <font>
+                            <Font name="Times New Roman" size="24.0"/>
+                        </font>
+                        <HBox.margin>
+                            <Insets left="8.0" top="8.0"/>
+                        </HBox.margin>
+                    </Label>
+                </HBox>
+                <VBox alignment="CENTER" spacing="8.0" HBox.hgrow="ALWAYS">
+                    <Button mnemonicParsing="false" onAction="#onResetLost" prefWidth="200.0"
+                            text="تصفير البكس غير معروفة المصير">
+                        <cursor>
+                            <Cursor fx:constant="HAND"/>
+                        </cursor>
+                        <font>
+                            <Font name="Times New Roman" size="14.0"/>
+                        </font>
+                    </Button>
+                    <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
+                        <Label text="البُكس المفقودة">
+                            <font>
+                                <Font name="Times New Roman" size="18.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets/>
+                            </HBox.margin>
+                        </Label>
+                        <Label fx:id="LostCount" text="0">
+                            <font>
+                                <Font name="Times New Roman" size="18.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets left="8.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <Label text="بُكسة">
+                            <font>
+                                <Font name="Times New Roman" size="18.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets left="8.0"/>
+                            </HBox.margin>
+                        </Label>
+                    </HBox>
+                </VBox>
+            </HBox>
+            <Separator/>
+            <HBox alignment="CENTER" prefHeight="75.0" spacing="32.0" VBox.vgrow="ALWAYS">
+                <VBox.margin>
+                    <Insets/>
+                </VBox.margin>
+                <padding>
+                    <Insets bottom="16.0" top="16.0"/>
+                </padding>
+                <HBox alignment="CENTER_LEFT">
+                    <padding>
+                        <Insets left="32.0"/>
+                    </padding>
+                    <Label text="البُكس المصنعة">
+                        <font>
+                            <Font name="Times New Roman" size="18.0"/>
+                        </font>
+                    </Label>
+                    <Label fx:id="numberManufactured" text="0">
+                        <font>
+                            <Font name="Times New Roman" size="18.0"/>
+                        </font>
+                        <HBox.margin>
+                            <Insets left="8.0"/>
+                        </HBox.margin>
+                    </Label>
+                    <Label text="بُكسة">
+                        <font>
+                            <Font name="Times New Roman" size="18.0"/>
+                        </font>
+                        <HBox.margin>
+                            <Insets left="8.0"/>
+                        </HBox.margin>
+                    </Label>
+                </HBox>
+                <Button fx:id="onDeleteBtn" mnemonicParsing="false" onAction="#onDelete" prefWidth="100.0"
+                        text="حذف المحدد">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                    <HBox.margin>
+                        <Insets left="8.0"/>
+                    </HBox.margin>
+                </Button>
+                <Label text="تاريخ الإنشاء :">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                    <HBox.margin>
+                        <Insets left="8.0"/>
+                    </HBox.margin>
+                </Label>
+                <VBox spacing="8.0">
+                    <DatePicker fx:id="FromDateCreated" onAction="#refreshTable" prefWidth="120.0"
+                                promptText="من"/>
+                    <DatePicker fx:id="ToDateCreated" onAction="#refreshTable" prefWidth="120.0"
+                                promptText="إلى"/>
+                </VBox>
+                <Label text="تاريخ التعديل :">
+                    <font>
+                        <Font size="18.0"/>
+                    </font>
+                </Label>
+                <VBox spacing="8.0">
+                    <DatePicker fx:id="FromDateUpdated" onAction="#refreshTable" prefWidth="120.0"
+                                promptText="من"/>
+                    <DatePicker fx:id="ToDateUpdated" onAction="#refreshTable" prefWidth="120.0"
+                                promptText="إلى"/>
+                </VBox>
+                <Button fx:id="TypeStorageEntriesBtn" layoutX="42.0" layoutY="42.0" mnemonicParsing="false"
+                        onAction="#onStorageEntryType" prefWidth="100.0" text="نوع القيد">
+                    <cursor>
+                        <Cursor fx:constant="HAND"/>
+                    </cursor>
+                    <HBox.margin>
+                        <Insets/>
+                    </HBox.margin>
+                </Button>
+                <VBox HBox.hgrow="ALWAYS">
+                    <HBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
+                        <Label text="بُكس الصيادين">
+                            <font>
+                                <Font name="Times New Roman" size="18.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets/>
+                            </HBox.margin>
+                        </Label>
+                        <Label fx:id="FishermenBalance" text="0">
+                            <font>
+                                <Font name="Times New Roman" size="18.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets left="8.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <Label text="بُكسة">
+                            <font>
+                                <Font name="Times New Roman" size="18.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets left="8.0"/>
+                            </HBox.margin>
+                        </Label>
+                    </HBox>
+                    <HBox alignment="CENTER_LEFT" VBox.vgrow="ALWAYS">
+                        <Label text="بُكس التجار">
+                            <font>
+                                <Font name="Times New Roman" size="18.0"/>
+                            </font>
+                            <padding>
+                                <Insets left="16.0"/>
+                            </padding>
+                        </Label>
+                        <Label fx:id="SellersBalance" text="0">
+                            <font>
+                                <Font name="Times New Roman" size="18.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets left="8.0"/>
+                            </HBox.margin>
+                        </Label>
+                        <Label text="بُكسة">
+                            <font>
+                                <Font name="Times New Roman" size="18.0"/>
+                            </font>
+                            <HBox.margin>
+                                <Insets left="8.0"/>
+                            </HBox.margin>
+                        </Label>
+                    </HBox>
+                </VBox>
+            </HBox>
+        </VBox>
+    </top>
+    <bottom>
+        <HBox alignment="CENTER" prefWidth="824.0" spacing="8.0" VBox.vgrow="ALWAYS">
+            <padding>
+                <Insets bottom="16.0" top="16.0"/>
+            </padding>
+            <Label text="إضافة بُكس مصنعة للمخزن">
+                <font>
+                    <Font name="Times New Roman" size="18.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="addToStorageTextField" onAction="#addToStorage" prefWidth="100.0"
+                       promptText="أدخل عدد البُكس">
+                <HBox.margin>
+                    <Insets left="16.0"/>
+                </HBox.margin>
+            </TextField>
+            <Button mnemonicParsing="false" onAction="#addToStorage" onKeyPressed="#addToStorage" text="إضافة">
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+                <font>
+                    <Font name="Times New Roman" size="14.0"/>
+                </font>
+                <HBox.margin>
+                    <Insets left="16.0"/>
+                </HBox.margin>
+            </Button>
+            <Separator orientation="VERTICAL">
+                <HBox.margin>
+                    <Insets left="16.0"/>
+                </HBox.margin>
+            </Separator>
+            <Label text="مجموع البكس المعروضة في الجدول">
+                <HBox.margin>
+                    <Insets left="16.0"/>
+                </HBox.margin>
+                <font>
+                    <Font size="18.0"/>
+                </font>
+            </Label>
+            <Label fx:id="sumOfBukas" text="0">
+                <HBox.margin>
+                    <Insets left="16.0"/>
+                </HBox.margin>
+                <font>
+                    <Font size="18.0"/>
+                </font>
+            </Label>
+            <Separator orientation="VERTICAL">
+                <HBox.margin>
+                    <Insets left="16.0"/>
+                </HBox.margin>
+            </Separator>
+            <Label text="تبليغ عن بُكس محطمة">
+                <font>
+                    <Font name="Times New Roman" size="18.0"/>
+                </font>
+                <HBox.margin>
+                    <Insets left="16.0"/>
+                </HBox.margin>
+            </Label>
+            <TextField fx:id="addBrokenTextField" onAction="#addBroken" prefWidth="100.0" promptText="أدخل عدد البُكس">
+                <HBox.margin>
+                    <Insets left="16.0"/>
+                </HBox.margin>
+            </TextField>
+            <Button mnemonicParsing="false" onAction="#addBroken" onKeyPressed="#addToStorage" text="تبليغ">
+                <cursor>
+                    <Cursor fx:constant="HAND"/>
+                </cursor>
+                <font>
+                    <Font name="Times New Roman" size="14.0"/>
+                </font>
+                <HBox.margin>
+                    <Insets left="16.0"/>
+                </HBox.margin>
+            </Button>
+        </HBox>
+    </bottom>
+</BorderPane>
